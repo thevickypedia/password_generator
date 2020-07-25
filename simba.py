@@ -1,11 +1,12 @@
+import string
 import random
 
-lower_case = 'abcdefghijklmnopqrstuvwxyz'
-upper_case = lower_case.upper()
-numbers = '123456789'
-punctuations = '!@#$%^&*()_+'
 
-required_str = lower_case + upper_case + numbers + punctuations
+def keygen():
+    required_str = string.ascii_letters + string.digits + string.punctuation
+    key = "".join(random.choices(required_str, k=10))
+    return key
 
-key = "".join(random.choices(required_str, k=10))
-print(key)
+
+if __name__ == '__main__':
+    print(keygen())
