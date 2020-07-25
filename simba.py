@@ -1,8 +1,11 @@
-import string
 import random
 
-required_str = string.ascii_letters + string.digits + string.punctuation
+lower_case = 'abcdefghijklmnopqrstuvwxyz'
+upper_case = lower_case.upper()
+numbers = '123456789'
+punctuations = '!@#$%^&*()_+'
 
-for a in range(8):
-    key = "".join(random.choice(required_str))
-    print(key)
+required_str = lower_case + upper_case + numbers + punctuations
+
+key = "".join(random.choices(required_str, k=10))
+print(key)
