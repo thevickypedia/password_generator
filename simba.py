@@ -13,11 +13,11 @@ def check_file():
     key = keygen()
     pass_file = os.path.isfile('password.txt')
     if pass_file:
-        file = open('password.txt', 'r')
+        file = open('password.txt', 'a')
         if key not in file:
-            f = open('password.txt', 'a')
-            f.write(f'{key}\n')
+            file.write(f'{key}\n')
             print(key)
+            file.close()
         else:
             print('Duplicate password has been generated. Please retry.')
             exit(0)
@@ -25,6 +25,7 @@ def check_file():
         f = open('password.txt', 'a')
         f.write(f'{key}\n')
         print(key)
+        f.close()
 
 
 if __name__ == '__main__':
