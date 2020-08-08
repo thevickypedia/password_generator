@@ -1,5 +1,6 @@
-import string
+import os
 import random
+import string
 
 
 def keygen():
@@ -8,5 +9,23 @@ def keygen():
     return key
 
 
+def check_file():
+    key = keygen()
+    pass_file = os.path.isfile('password.txt')
+    if pass_file:
+        file = open('password.txt', 'r')
+        if key not in file:
+            f = open('password.txt', 'a')
+            f.write(f'{key}\n')
+            print(key)
+        else:
+            print('Duplicate password has been generated. Please retry.')
+            exit(0)
+    else:
+        f = open('password.txt', 'a')
+        f.write(f'{key}\n')
+        print(key)
+
+
 if __name__ == '__main__':
-    print(keygen())
+    check_file()
