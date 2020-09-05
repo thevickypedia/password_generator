@@ -17,7 +17,6 @@ def check_file():
         if key not in file:
             file = open('password.txt', 'a')
             file.write(f'{key}\n')
-            print(key)
             file.close()
         else:
             print('Duplicate password has been generated. Please retry.')
@@ -25,9 +24,9 @@ def check_file():
     else:
         file = open('password.txt', 'a')
         file.write(f'{key}\n')
-        print(key)
         file.close()
+    return key
 
 
 if __name__ == '__main__':
-    check_file()
+    print(check_file())
