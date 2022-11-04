@@ -1,6 +1,6 @@
-from os.path import isfile
-from random import choices
-from string import ascii_letters, digits, punctuation
+import os
+import random
+import string
 
 
 def keygen() -> str:
@@ -10,9 +10,8 @@ def keygen() -> str:
         str:
         10 digit random key as a string.
     """
-    required_str = ascii_letters + digits + punctuation
-    key = "".join(choices(required_str, k=10))
-    return key
+    required_str = string.ascii_letters + string.digits + string.punctuation
+    return "".join(random.choices(required_str, k=10))
 
 
 def check_file(key: str) -> str:
@@ -25,7 +24,7 @@ def check_file(key: str) -> str:
         str:
         Returns the received key just to print.
     """
-    if isfile('password.txt'):
+    if os.path.isfile('password.txt'):
         with open('password.txt', 'r') as file:
             file = file.read()
         if key not in file:

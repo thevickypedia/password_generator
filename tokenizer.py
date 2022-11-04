@@ -1,7 +1,7 @@
-from binascii import hexlify
-from hashlib import sha1
-from os import urandom
-from uuid import uuid4, UUID
+import binascii
+import hashlib
+import os
+import uuid
 
 
 def generate_key() -> str:
@@ -11,10 +11,10 @@ def generate_key() -> str:
         str:
         Hexadecimal representation of the randomly generated alpha numeric value.
     """
-    return hexlify(urandom(16)).decode()
+    return binascii.hexlify(os.urandom(16)).decode()
 
 
-def hashed(key: UUID) -> str:
+def hashed(key: uuid.UUID) -> str:
     """Generates sha from UUID.
 
     Args:
@@ -24,8 +24,8 @@ def hashed(key: UUID) -> str:
         str:
         Hashed value of the UUID received.
     """
-    return sha1(key.bytes + bytes(key.hex, "utf-8")).digest().hex()
+    return hashlib.sha1(key.bytes + bytes(key.hex, "utf-8")).digest().hex()
 
 
 if __name__ == '__main__':
-    print(hashed(key=uuid4()))
+    print(hashed(key=uuid.uuid4()))
